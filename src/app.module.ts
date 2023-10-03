@@ -5,9 +5,7 @@ import { EventsController } from './events/events.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService} from '@nestjs/config';
 import { join } from 'path';
-import { UsersModule } from './user/user.module';
-import { UserService } from './user/user.service';
-
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -26,9 +24,9 @@ import { UserService } from './user/user.service';
       }),
       inject: [ConfigService],
     }),
-    UsersModule
+    UserModule,
   ],
   controllers: [AppController, EventsController],
-  providers: [AppService, UserService],
+  providers: [AppService],
 })
 export class AppModule {}

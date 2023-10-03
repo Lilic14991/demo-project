@@ -1,12 +1,12 @@
 import { UUID } from 'crypto';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-enum Device {
+export enum Device {
     Android = 'android',
     Ios = 'ios',
   }
 
-enum ProductPackage {
+export enum ProductPackage {
     Basic = 'basic',
     Premium = 'premium'
 }
@@ -34,3 +34,4 @@ export class User {
     @Column()
     configuration_menu: string
 }
+
