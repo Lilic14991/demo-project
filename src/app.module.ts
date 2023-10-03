@@ -4,6 +4,10 @@ import { AppService } from './app.service';
 import { EventsController } from './events/events.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService} from '@nestjs/config';
+import { join } from 'path';
+import { UsersModule } from './user/user.module';
+import { UserService } from './user/user.service';
+
 
 @Module({
   imports: [
@@ -17,13 +21,14 @@ import { ConfigModule, ConfigService} from '@nestjs/config';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [],
+        entities: [join(process.cwd(), 'dist/**/*.entity.js')],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
+    UsersModule
   ],
   controllers: [AppController, EventsController],
-  providers: [AppService],
+  providers: [AppService, UserService],
 })
 export class AppModule {}
