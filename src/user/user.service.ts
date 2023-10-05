@@ -17,6 +17,10 @@ export class UserService {
         return await this.userRepository.save(user);
     }
 
+    async getById(id: UUID) {
+        return await this.userRepository.findOneBy({id});
+    }
+
     async findAll() {
         return await this.userRepository.find();
     }

@@ -1,7 +1,8 @@
-import { Controller, Body, Post, Get, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Body, Post, Get, Put, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UUID } from 'crypto';
+
 
 @Controller('api/user')
 export class UserController {
@@ -9,9 +10,15 @@ export class UserController {
         private readonly userService: UserService) {}
 
     @Post()
+    @UsePipes(new ValidationPipe())
     crete(@Body() dto: CreateUserDto) {
         
         return this.userService.create(dto);
+    }
+
+    @Get(':id')
+    getOneById(@Param('id') id: UUID) {
+        return this.userService.getById(id);
     }
 
     @Get()
