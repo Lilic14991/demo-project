@@ -13,7 +13,7 @@ export class CreateManifestationDto {
     contact: string;
     intro: string;
     intro2: string;
-    introExpanded: [string];
+    introExpanded: boolean;
     x: number;
     y: number;
 }

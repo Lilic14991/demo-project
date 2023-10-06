@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Param } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Manifestations } from 'src/manifestations/manifestations.entity';
 import { Repository } from 'typeorm';
@@ -18,8 +18,12 @@ export class ManifestationsService {
         return await this.manifestationsRepository.save(manifestation);
     }
 
-    // async getById(id: number): Promise<Manifestations | null> {
-    //         return await this.manifestationsRepository.findOne({where: {id}});
-    //     }
+    async getAll(){
+        return await this.manifestationsRepository.find();
+    }
+
+    async getById(@Param('id') id: number): Promise<Manifestations | null> {
+            return await this.manifestationsRepository.findOneBy({id});
+        }
 
 }

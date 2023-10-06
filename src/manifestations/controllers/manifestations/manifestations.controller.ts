@@ -8,9 +8,8 @@ import { ManifestationsService } from 'src/manifestations/services/manifestation
 export class ManifestationsController {
     constructor(private readonly manifestationsService: ManifestationsService) {}
     @Get()
-    getManifestations(@Query('sortAsc', ParseBoolPipe) sortAsc: boolean) {
-        console.log(sortAsc);
-        return { name: 'Lav Fest', date: '2023-10-15', length: 7 };
+    getManifestations() {
+        return this.manifestationsService.getAll();
     }
 
     @Post()
@@ -21,8 +20,7 @@ export class ManifestationsController {
     }
 
     @Get(':id')
-    getByIdManfistation(@Param('id', ParseIntPipe)  id: number) {
-        console.log(id);
-        return {id};
+    async getByIdManfistation(@Param('id', ParseIntPipe)  id: number) {
+        return await this.manifestationsService.getById(id);
     }
 }

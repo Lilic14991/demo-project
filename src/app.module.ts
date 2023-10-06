@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService} from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { ManifestationsModule } from './manifestations/manifestations.module';
 import { dataSourceOptions } from 'db/data-source';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { dataSourceOptions } from 'db/data-source';
     TypeOrmModule.forRoot(dataSourceOptions),
     UserModule,
     ManifestationsModule,
+    CategoriesModule,
   ],
   controllers: [EventsController],
   providers: [],
