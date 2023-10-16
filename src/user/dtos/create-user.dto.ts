@@ -1,22 +1,13 @@
-import { Device, ProductPackage } from '../user.entity'
-import { IsNotEmpty } from 'class-validator'
+import { Device, ProductPackage } from '../models/user.entity'
 
-export class CreateUserDto {
-    @IsNotEmpty()
-    name: string;
-    @IsNotEmpty()
-    last_name: string;
-    @IsNotEmpty()
-    device: Device;
-    @IsNotEmpty()
-    is_active: boolean;
-    @IsNotEmpty()
-    is_logged: boolean;
-    @IsNotEmpty()
-    created_at: Date;
-    @IsNotEmpty()
-    last_visit: Date; 
-    @IsNotEmpty()
-    product_package: ProductPackage;
-    configuration_menu: string;
+export type CreateUserDto =  {
+    name?: string;
+    last_name?: string;
+    device?: Device;
+    is_active?: boolean;
+    is_logged?: boolean;
+    created_at?: Date;
+    last_visit?: Date; 
+    product_package?: ProductPackage;
+    configuration_menu?: string;
 }

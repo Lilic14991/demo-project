@@ -7,15 +7,15 @@ import { Categories } from 'src/categories/categories.entity';
 export class CategoriesService {
     constructor(
         @InjectRepository(Categories)
-        private readonly countriesRepository:
+        private readonly categoriesRepository:
         Repository<Categories>) {}
         
         async getAll() {
-            return await this.countriesRepository.find();
+            return await this.categoriesRepository.find();
         }
 
         async getById(@Param('id') id: number): Promise<Categories | null> {
-            return await this.countriesRepository.findOneBy({id});
+            return await this.categoriesRepository.findOneBy({id});
         }
 
 

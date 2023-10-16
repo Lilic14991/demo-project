@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './user.entity';
-import { CreateUserDto } from './dtos/create-user.dto';
+import { User } from '../models/user.entity';
+import { CreateUserDto } from '../dtos/create-user.dto';
 import { UUID } from 'crypto';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class UserService {
         return await this.userRepository.save(user);
     }
 
-    async getById(id: UUID) {
+    async getById(id: UUID): Promise <User | null> {
         return await this.userRepository.findOneBy({id});
     }
 

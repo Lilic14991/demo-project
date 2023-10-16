@@ -29,6 +29,7 @@ export class Manifestations {
 
     @Column()
     eventFrom: Date;
+
     @Column()
     eventTo: Date;
 
@@ -52,11 +53,10 @@ export class Manifestations {
     @Column()
     timestamp: Date;
 
-    @Column()
+    @Column('float')
     @IsNotEmpty()
     x: number;
-    @Column()
+    @Column('float')
     @IsNotEmpty()
     y: number;
-
 }

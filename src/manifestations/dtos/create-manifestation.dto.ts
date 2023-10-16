@@ -3,7 +3,7 @@ import { IsNotEmpty } from 'class-validator';
 export class CreateManifestationDto {
     @IsNotEmpty()
     title: string;
-    categoryId: number;
+    category_id: number;
     photo: string;
     eventDate: Date;
     timestamp: Date;
